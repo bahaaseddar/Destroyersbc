@@ -1,0 +1,192 @@
+{\rtf1\fbidis\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Courier New;}{\f1\fnil\fcharset178 Courier New;}{\f2\fnil\fcharset1 Segoe UI Symbol;}}
+{\*\generator Riched20 10.0.17134}\viewkind4\uc1 
+\pard\ltrpar\f0\fs22\lang1036 const Discord = require("discord.js");\par
+const client = new Discord.Client();\par
+const prefix = "$";\par
+\par
+\par
+\par
+client.on('ready', () => \{\par
+   console.log(`----------------`);\par
+      console.log(`Desert Bot- Script By : EX Clan`);\par
+        console.log(`----------------`);\par
+      console.log(`ON $\{client.guilds.size\} Servers '     Script By : EX Clan ' `);\par
+    console.log(`----------------`);\par
+  console.log(`Logged in as $\{client.user.tag\}!`);\par
+client.user.setGame(`$bc |Destroyers_Team`,"http://twitch.tv/Death Shop")\par
+client.user.setStatus("dnd")\par
+\});\par
+\par
+\par
+\par
+client.on("message", async message => \{\par
+    var command = message.content.split(" ")[0];\par
+    command = command.slice(prefix.length);\par
+        if(!message.channel.guild) return;\par
+            var args = message.content.split(" ").slice(1).join(" ");\par
+            if(command == "bc") \{\par
+                if(!message.member.hasPermission("ADMINISTRATOR")) \{\par
+                    return message.channel.send("**\f1\rtlch\lang5121\'e1\'e1\'c3\'d3\'dd \'e1\'c7 \'ca\'e3\'ca\'e1\'df \'d5\'e1\'c7\'cd\'ed\'c9\f0\ltrch\lang1036  `ADMINISTRATOR`**");\par
+                \}\par
+                    if(!args) \{\par
+                        return message.reply("**\f1\rtlch\lang5121\'ed\'cc\'c8 \'da\'e1\'ed\'df \'df\'ca\'c7\'c8\'c9 \'df\'e1\'e3\'c9 \'c7\'e6 \'cc\'e3\'e1\'c9 \'e1\'c5\'d1\'d3\'c7\'e1 \'c7\'e1\'c8\'d1\'e6\'cf\'df\'c7\'d3\'ca\f0\ltrch\lang1036 **");\par
+                    \}\par
+                        message.channel.send(`**\f1\rtlch\lang5121\'e5\'e1 \'c3\'e4\'ca \'e3\'ca\'c3\'df\'cf \'e3\'e4 \'c5\'d1\'d3\'c7\'e1\'df \'c7\'e1\'c8\'d1\'e6\'cf\'df\'c7\'d3\'ca\'bf\f0\ltrch\lang1036\\n\f1\rtlch\lang5121\'e3\'cd\'ca\'e6\'ec \'c7\'e1\'c8\'d1\'e6\'cf\'df\'c7\'d3\'ca\f0\ltrch\lang1036 : \\`$\{args\}\\`**`).then(m => \{\par
+                            m.react("\f2\lang5121\u9989?\f0\lang1033 ")\par
+                            .then(() => m.react("\f2\u10060?\f0 "));\par
+\par
+                            let yesFilter = (reaction, user) => reaction.emoji.name == "\f2\u9989?\f0 " && user.id == message.author.id;\par
+                            let noFiler = (reaction, user) => reaction.emoji.name == "\f2\u10060?\f0 " && user.id == message.author.id;\par
+\par
+                            let yes = m.createReactionCollector(yesFilter);\par
+                            let no = m.createReactionCollector(noFiler);\par
+\par
+                            yes.on("collect", v => \{\par
+                                m.delete();\par
+                                    message.channel.send(`:ballot_box_with_check: | Done ... The Broadcast Message Has Been Sent For $\{message.guild.memberCount\} Members`).then(msg => msg.delete(5000));\par
+                                        message.guild.members.forEach(member => \{\par
+                                            let bc = new Discord.RichEmbed()\par
+                                            .setColor("RANDOM")\par
+                                            .setThumbnail(message.author.avatarURL)\par
+                                            .setTitle("Broadcast")\par
+                                            .addField("Server", message.guild.name)\par
+                                            .addField("Sender", message.author.username)\par
+                                            .addField("Message", args);\par
+\par
+                                            member.sendEmbed(bc);\par
+                                        \});\par
+                        \});\par
+                        no.on("collect", v => \{\par
+                            m.delete();\par
+                            message.channel.send("**Broadcast Canceled.**").then(msg => msg.delete(3000));\par
+                        \});\par
+                            \par
+                        \});\par
+            \}\par
+            if(command == "bco") \{\par
+                if(!message.member.hasPermission("ADMINISTRATOR")) \{\par
+                    return message.channel.send("**\f1\rtlch\lang5121\'e1\'e1\'c3\'d3\'dd \'e1\'c7 \'ca\'e3\'ca\'e1\'df \'d5\'e1\'c7\'cd\'ed\'c9\f0\ltrch\lang1036  `ADMINISTRATOR`**");\par
+                \}\par
+                    if(!args) \{\par
+                        return message.reply("**\f1\rtlch\lang5121\'ed\'cc\'c8 \'da\'e1\'ed\'df \'df\'ca\'c7\'c8\'c9 \'df\'e1\'e3\'c9 \'c7\'e6 \'cc\'e3\'e1\'c9 \'e1\'c5\'d1\'d3\'c7\'e1 \'c7\'e1\'c8\'d1\'e6\'cf\'df\'c7\'d3\'ca\f0\ltrch\lang1036 **");\par
+                    \}\par
+                        message.channel.send(`**\f1\rtlch\lang5121\'e5\'e1 \'c3\'e4\'ca \'e3\'ca\'c3\'df\'cf \'e3\'e4 \'c5\'d1\'d3\'c7\'e1\'df \'c7\'e1\'c8\'d1\'e6\'cf\'df\'c7\'d3\'ca\'bf\f0\ltrch\lang1036\\n\f1\rtlch\lang5121\'e3\'cd\'ca\'e6\'ec \'c7\'e1\'c8\'d1\'e6\'cf\'df\'c7\'d3\'ca\f0\ltrch\lang1036 : \\`$\{args\}\\`**`).then(m => \{\par
+                            m.react("\f2\lang5121\u9989?\f0\lang1033 ")\par
+                            .then(() => m.react("\f2\u10060?\f0 "));\par
+\par
+                            let yesFilter = (reaction, user) => reaction.emoji.name == "\f2\u9989?\f0 " && user.id == message.author.id;\par
+                            let noFiler = (reaction, user) => reaction.emoji.name == "\f2\u10060?\f0 " && user.id == message.author.id;\par
+\par
+                            let yes = m.createReactionCollector(yesFilter);\par
+                            let no = m.createReactionCollector(noFiler);\par
+\par
+                            yes.on("collect", v => \{\par
+                                m.delete();\par
+                                    message.channel.send(`:ballot_box_with_check: | Done ... The Broadcast Message Has Been Sent For $\{message.guild.members.filter(r => r.presence.status !== "offline").size\} Members`).then(msg => msg.delete(5000));\par
+                                        message.guild.members.filter(r => r.presence.status !== "offline").forEach(member => \{\par
+                                            let bco = new Discord.RichEmbed()\par
+                                            .setColor("RANDOM")\par
+                                            .setThumbnail(message.author.avatarURL)\par
+                                            .setTitle("Broadcast")\par
+                                            .addField("Server", message.guild.name)\par
+                                            .addField("Sender", message.author.username)\par
+                                            .addField("Message", args);\par
+\par
+                                            member.sendEmbed(bco);\par
+                                        \});\par
+                        \});\par
+                        no.on("collect", v => \{\par
+                            m.delete();\par
+                            message.channel.send("**Broadcast Canceled.**").then(msg => msg.delete(3000));\par
+                        \});\par
+                            \par
+                        \});\par
+            \}\par
+\});\par
+\par
+\par
+\par
+client.on("message", async message => \{\par
+    if(message.content == prefix + "server") \{\par
+        if(!message.channel.guild) return;\par
+            if(!message.member.hasPermission("MANAGE_GUILD")) \{\par
+                return message.channel.send("\f1\rtlch\lang5121\'e1\'ed\'d3 \'e1\'cf\'ed\'df \'c7\'e1\'d5\'e1\'c2\'cd\'ed\'c9 \'c7\'e1\'df\'c2\'dd\'ed\'c9\f0\ltrch\lang1036  . :broken_heart:");\par
+            \}\par
+\par
+                let server = new Discord.RichEmbed()\par
+                    .setAuthor(message.guild.name)\par
+                    .setColor("RANDOM")\par
+                    .setTitle("Server Info :hearts: :sparkles:")\par
+                    .setDescription(`Members :bust_in_silhouette: : $\{message.guild.memberCount\}\\nOwner :crown: : $\{message.guild.owner.user.username\}\\nServer ID :id: : $\{message.guild.id\}\\nRoles :lock: : $\{message.guild.roles.size\}\\nRegion :earth_africa: : $\{message.guild.region.toUpperCase()\}`);\par
+\par
+                    message.channel.sendEmbed(server);\par
+\par
+    \}\par
+\});\par
+client.on("message", async message => \{\par
+    if(message.content.startsWith(prefix + "banned")) \{\par
+        if(!message.guild) return;\par
+        message.guild.fetchBans()\par
+        .then(bans => \{\par
+            let b = bans.size;\par
+            let bb = bans.map(a => `$\{a\}`).join(" - ");\par
+            message.channel.send(`**\\`$\{b\}\\` | $\{bb\}**`);\par
+        \});\par
+    \}\par
+\});\par
+client.on("message", async message => \{\par
+    if(message.content.startsWith(prefix + "invite")) \{\par
+        let invite = new Discord.RichEmbed()\par
+            .setColor("RANDOM")\par
+            .setAuthor(message.author.username, message.author.displayAvatarURL)\par
+            .setThumbnail(message.author.avatarURL)\par
+            .setTitle("**Click Here To Invite The Bot To Your Server :sparkling_heart:**")\par
+            .setURL(`https://discordapp.com/oauth\f1\rtlch\lang5121 2\f0\ltrch\lang1036 /authorize?client_id=$\{client.user.id\}&scope=bot&permissions=\f1\rtlch\lang5121 8\f0\ltrch\lang1036 `);\par
+            message.channel.sendEmbed(invite);\par
+    \}\par
+\});\par
+client.on("message", async message => \{\par
+    if(message.content.startsWith(prefix + "help")) \{\par
+        let help = new Discord.RichEmbed()\par
+            .setColor("RANDOM")\par
+            .setThumbnail(message.author.avatarURL)\par
+            .setDescription(`**__\f1\rtlch\lang5121\'c8\'d1\'e6\'cf\'df\'c7\'d3\'ca \'c8\'e6\'ca\f0\ltrch\lang1036  | Version \f1\rtlch\lang5121 1.1\f0\ltrch\lang1036 __ \par
+\par
+            \f1\rtlch\lang5121\'c8\'d1\'e6\'cf\'df\'c7\'d3\'ca \'da\'c7\'cf\'ed\f0\ltrch\lang1036  : $\{prefix\}bc\par
+            \f1\rtlch\lang5121\'cf\'da\'e6\'c9 \'c7\'e1\'c8\'e6\'ca \'e1\'d3\'ed\'d1\'dd\'d1\'df\f0\ltrch\lang1036  : $\{prefix\}invite\par
+            \f1\rtlch\lang5121\'e3\'da\'e1\'e6\'e3\'c7\'ca \'da\'e4 \'c7\'e1\'d3\'ed\'d1\'dd\'d1\f0\ltrch\lang1036  : $\{prefix\}server\par
+            \f1\rtlch\lang5121\'c8\'d1\'e6\'cf\'df\'c7\'d3\'ca \'e1\'e1\'c3\'e6\'e4\'e1\'c7\'ed\'e4 \'dd\'de\'d8\f0\ltrch\lang1036  : $\{prefix\}bco\par
+            \f1\rtlch\lang5121\'ed\'da\'d1\'d6 \'e1\'df \'da\'cf\'cf \'c7\'e1\'e3\'ca\'c8\'e4\'cf\'ed\'e4 \'e3\'e4 \'d3\'ed\'d1\'dd\'d1\'df\f0\ltrch\lang1036  : $\{prefix\}banned\par
+            \f1\rtlch\lang5121\'d1\'c7\'c8\'d8 \'d3\'ed\'d1\'dd\'d1 \'c7\'e1\'cf\'da\'e3 \'c7\'e1\'dd\'e4\'ed\f0\ltrch\lang1036  : https://discord.gg/k\f1\rtlch\lang5121 6\f0\ltrch\lang1036 MvfrC\par
+            **`);\par
+            message.channel.sendEmbed(help); // \f1\rtlch\lang5121\'d1\'c7\'c8\'d8 \'c7\'e1\'d3\'ed\'d1\'dd\'d1 \'ed\'da\'e6\'cf \'c7\'e1\'ec \'d3\'ed\'d1\'dd\'d1\f0\ltrch\lang1036  CODES .\par
+    \}\par
+\});\par
+\par
+\par
+client.on("message", message => \{ //clear\par
+              var args = message.content.substring(prefix.length).split(" ");\par
+              if (message.content.startsWith(prefix + "clear")) \{\par
+                  if(!message.channel.guild) return message.reply('**? \f1\rtlch\lang5121\'c7\'d3\'dd \'e1\'df\'e4 \'e5\'d0\'c7 \'c7\'e1\'c7\'e3\'d1 \'e1\'e1\'d3\'ed\'d1\'dd\'d1\'c7\'ca \'dd\'de\'d8\f0\ltrch\lang1036  **');         \par
+     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**?  \f1\rtlch\lang5121\'e1\'c7 \'ed\'e6\'cc\'cf \'e1\'cf\'ed\'df \'d5\'e1\'c7\'cd\'ed\'c9 \'e1\'e3\'d3\'cd \'c7\'e1\'d4\'c7\'ca\f0\ltrch\lang1036 **');\par
+          var msg;\par
+          msg = parseInt();\par
+        \par
+        message.channel.fetchMessages(\{limit: msg\}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);\par
+        message.channel.sendMessage("", \{embed: \{\par
+          title: "``\f1\rtlch\lang5121\'ca\'dc\'dc\'e3 \'e3\'d3\'cd \'c7\'e1\'d4\'c7\'ca\f0\ltrch\lang1036  ``",\par
+          color: \f1\rtlch\lang5121 0\f0\ltrch\lang1036 x\f1\rtlch\lang5121 5016\f0\ltrch\lang1036 f\f1\rtlch\lang5121 3\f0\ltrch\lang1036 , \par
+          footer: \{\par
+            \par
+          \}\par
+        \}\}).then(msg => \{msg.delete(\f1\rtlch\lang5121 3000\f0\ltrch\lang1036 )\});\par
+                            \}\par
+  \par
+       \par
+\});\par
+\par
+\par
+\par
+client.login(process.env.BOT_TOKEN);\par
+}
+ 
